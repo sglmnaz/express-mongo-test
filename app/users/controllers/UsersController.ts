@@ -20,5 +20,5 @@ export class UsersController {
     removeUser(req: express.Request, res: express.Response) {
         res.status(200).send(`Delete to user ${req.params.userId}`);
     }
-    
+
 }
