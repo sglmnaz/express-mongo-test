@@ -1,8 +1,11 @@
 import express from 'express';
 import { UserRoutes } from './routes/userRoutes';
-import chalk from 'chalk'
+import chalk from 'chalk';
 import { connectToDb } from './db';
 export const app = express(); app.use(express.json());
+import { Collection, Db, MongoClient } from 'mongodb'
+import { User } from './interfaces/userInterface';
+
 
 // Service port
 const port = process.env.PORT || 8080;
@@ -13,10 +16,18 @@ const dbName = process.env.DB_NAME ||  'express-test';
 
 connectToDb(url, dbName)
 
-    .then((db) => {
+    .then((db:any) => {
 
         app.get('/', (req, res) => {
 
+            // const CollectionName = 'users'
+            // const collection : Collection = db.collection(CollectionName)
+            // collection.insertOne({
+            //     email : "francesca.capodanno@synclab.it",
+            //     username : "francesca.capodanno",
+            //     password : "nando_01"        
+            // })
+            // .then(()=>console.log('post succesfull'))
             res.status(200).send(`Hello this is the app index`)
         
         });

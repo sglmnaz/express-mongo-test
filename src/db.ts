@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { MongoClient } from 'mongodb'
+import { Db, MongoClient } from 'mongodb'
 
 export const connectToDb = (url: any, dbName: any) => {
 
@@ -9,7 +9,8 @@ export const connectToDb = (url: any, dbName: any) => {
         MongoClient.connect(url , { useUnifiedTopology: true })
             .then((client) => {
                 console.log('Connected to Database: ' + chalk.blue(dbName))
-                resolve(client.db(dbName))
+                const db : Db = client.db(dbName)
+                resolve(db)
             })
             .catch((error) => {
                 reject(error)
