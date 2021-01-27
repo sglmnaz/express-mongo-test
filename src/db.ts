@@ -17,4 +17,3 @@ export const connectToDb = (url: any, dbName: any) => {
 
     })
 }
-
