@@ -8,7 +8,7 @@ export class UserRoutes implements Routes {
         this.addRoutes()
     }
 
-    addRoutes = () => {
+    addRoutes() {
 
         app.get('/api/users', (req, res) => controller.listUsers(req, res));
     
